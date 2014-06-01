@@ -1,1 +1,5 @@
 venv
+tags
+.tags
+.idea
+.tgs_sorted_by_file
