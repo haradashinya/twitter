@@ -1,0 +1,93 @@
+{% if user %}
+
+{% load extra %}
+{% if user.username != login_user.username  %}
+<div id="small">
+    {% else %}
+<div id="not-small">
+{% endif %}
+
+{% if user.username != login_user.username %}
+<img src="/media/{{user.profile.picture}}"/>
+{% else %}
+<img src="/media/{{login_user.profile.picture}}"/>
+{% endif %}
+
+
+
+{% if user.username != login_user.username %}
+<h2>{{user.username}}</h2>
+{% else %}
+<h2>{{login_user.username}}</h2>
+{% endif %}
+
+
+
+
+
+<div class="cf">
+    <table class="detail-area">
+        <tr>
+            <th>Tweets</th>
+            <th>Following</th>
+            <th>Followers</th>
+        </tr>
+        <tr>
+            {% if request.session.username in request.get_full_path or request.get_full_path == "/" %}
+            <td>{{login_user.profile.tweets|length}}</td>
+            <td>{{login_user.profile.followings|length}}</td>
+            <td>{{login_user.profile.followers|length}}</td>
+            {% else %}
+            <td>{{user.profile.tweets|length}}</td>
+            <td>{{user.profile.followings|length}}</td>
+            <td>{{user.profile.followers|length}}</td>
+            {% endif %}
+        </tr>
+
+    </table>
+
+    {% if user.username == request.session.username %}
+    <textarea class="area-tweet"></textarea>
+
+    <form method="POST" id="tweet-form">
+        {% csrf_token %}
+        <input type="submit" value="Tweet" class="btn-tweet"></input>
+    </form>
+    {% else %}
+    <!-- follow or unfollow -->
+
+    {% if request.session.username != user.username %}
+        {% if  request.session.username|is_following:user.username %}
+
+
+        <form method="POST" action='/tweets/{{user.username}}/relationship'>
+
+            {% csrf_token %}
+            <input type="hidden" name="meth_type" value="delete"/>
+            <input type="submit" value="UnFollow">
+        </form>
+        {% else %}
+
+
+
+
+        <form method="post" action='/tweets/{{user.username}}/relationship'>
+            {% csrf_token %}
+            <input type="hidden" name="meth_type" value="post"/>
+            <input type="submit" value="Follow">
+        </form>
+
+
+        {% endif %}
+    {% endif %}
+
+    {% endif %}
+
+
+</div>
+</div>
+
+
+
+{% endif %}
+

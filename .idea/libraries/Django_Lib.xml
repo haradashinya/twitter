@@ -1,0 +1,8 @@
+<component name="libraryTable">
+  <library name="Django Lib">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/django-trunk" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

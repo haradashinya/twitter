@@ -1,0 +1,49 @@
+{% extends "twitter/base.html" %}
+
+{% block body_block %}
+
+{% load extra %}
+
+{% load static %}
+
+<div class="page-wrapper cf">
+
+
+    <div class="page-left">
+        {% if login_user %}
+        <h2>{{request.session.username}}</h2>
+        {% if login_user.profile.picture %}
+        <img src="/media/{{login_user.profile.picture}}"/>
+        {% endif %}
+
+        <p>
+        Following: <a href="/tweets/{{login_user.username}}/relationship?type=followings">
+
+            {{user.profile.followings|length}}</a>
+        </p>
+
+        <p>
+        Follower: <a href="/tweets/{{login_user.username}}/relationship?type=followers">
+            {{user.profile.followers|length}}</a>
+        </p>
+        {% endif %}
+    </div>
+
+    <div class="page-right">
+        {% if type == "followers" %}
+        <h2>Followers</h2>
+        {% else %}
+        <h2>Followings</h2>
+        {% endif %}
+
+        <div class="tweets">
+            <ul>
+            {% for user in rel_users %}
+            <li><a href="/tweets/{{user.username}}">{{user.username}}</a></li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+
+{% endblock  %}

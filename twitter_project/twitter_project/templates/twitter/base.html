@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+    {% load static %}
+    <link
+    href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
+    rel="stylesheet">
+    <script src='https://code.jquery.com/jquery-2.1.1.js'></script>
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}"/>
+    <script>
+        window.user = '{{request.session.username}}';
+    </script>
+    <script src="{% static 'js/post.js' %}"></script>
+
+</head>
+
+<body>
+    <div id="container">
+
+
+<header>
+    <hgroup class="cf">
+        <h1 class="left">
+            <a href="/"><img src="{% static 'img/logo.svg' %}"/></a>
+        </h1>
+        {% if request.session.username %}
+            <h1><a href="/logout"><i class="fa fa-sign-out"></i></a></h1>
+            <h1><a href="/{{request.session.username}}/edit"><i class="fa fa-bars"></i></a></h1>
+        {% else %}
+            <h1><a href="/login"><i class="fa fa-sign-in"></i></a></h1>
+        {% endif %}
+
+        {% comment %}
+        <h1> <a href="/{{ request.session.username }}/tweets/new">New</a></h1>
+        {% endcomment %}
+    </hgroup>
+
+</header>
+
+
+
+{%  block body_block %}
+{%  endblock  %}
+
+
+
+
+</div>
+
+
+</body>
+
+</html>

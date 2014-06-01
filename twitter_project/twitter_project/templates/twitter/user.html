@@ -1,0 +1,77 @@
+{% extends "twitter/base.html" %}
+
+
+
+{% load extra %}
+
+{% block body_block %}
+<div class="page-wrapper cf">
+    <div class="page-left">
+
+        <div id="inner" class="big">
+            {% include "twitter/partials/sidebar.html" %}
+        </div>
+    </div>
+
+    <div class="page-right">
+        <div id="inner" class="tweets">
+            <h2>Tweets</h2>
+
+            {%  for tweet in tweets  %}
+            <div class="tweet">
+                <img src="/media/{{tweet.user.profile.picture}}"/>
+                <span class='username'><a
+                        href="/tweets/{{tweet.user.username}}">{{tweet.user.username}}</a></span>
+
+                <span class="date right">{{ tweet.created_date }}</span>
+                <p class="text clear">{{tweet.pretty_text}}</p>
+            </div>
+            {% endfor %}
+
+            <div class="pagination cf">
+
+                {# START cc-wrapper #}
+                <div class="cc-wrapper">
+                    <div class="cc left">
+                        {% if tweets.has_previous %}
+                        <a href="?page={{ tweets.previous_page_number }}">Back</a>
+                        {% else %}
+                        <span>Back</span>
+                        {% endif %}
+                    </div>
+
+
+                    <div class="cc left">
+
+                        {% if tweets.has_next %}
+                        <a href="?page={{ tweets.next_page_number }}">Next</a>
+                        {% else %}
+                        <span>Next</span>
+                        {% endif %}
+                    </div>
+                </div>
+                {# END cc-wrapper #}
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    {# {% endif %} #}
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+{% endblock %}

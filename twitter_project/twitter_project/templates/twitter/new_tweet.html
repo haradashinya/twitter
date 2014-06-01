@@ -1,0 +1,15 @@
+{% extends "twitter/base.html" %}
+
+
+
+{% block body_block %}
+
+    <form method="POST" action="/{{ request.session.username }}/tweets/new">
+    {%  csrf_token %}
+    {{ tweet_form.as_p }}
+
+    <input type="submit"/>
+    </form>
+
+
+{% endblock %}

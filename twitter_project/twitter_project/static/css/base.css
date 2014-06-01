@@ -1,0 +1,261 @@
+body {
+    margin-top: -1px;
+    font-family: "Helvetica Neue",serif;
+}
+a:hover {
+    color: red;
+}
+
+a{
+    text-decoration: none;
+}
+header {
+    background: rgb(18,106,63);
+    font-size: 14px;
+    color: white;
+    height: 40px;
+}
+header a {
+    color: white;
+}
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+.cf {
+    *zoom: 1;
+}
+
+/* START hgroup */
+hgroup h1 {
+    float: right;
+    margin: 0 15px 0 0;
+}
+hgroup h1 a {
+    text-decoration: none;
+}
+hgroup h1 a {
+}
+hgroup h1 img {
+    display: inline;
+    margin-top: 5px;
+    margin-left: 15px;
+}
+
+a {
+    color: #0E70A5;
+}
+/* END hgroup */
+
+#container {
+    margin: 0 auto;
+    background: rgb(220,255,184) ;
+    width: 960px;
+
+}
+#container {
+}
+
+/* START PAGE LEFT */
+
+#container .page-wrapper .page-left {
+    width: 225px;
+    padding-left: 16px;
+    background: rgb(220,255,184) ;
+    min-height: 800px;
+    float: left;
+}
+
+
+#container .page-wrapper .page-left #inner.big {
+    margin-top: 20px;
+
+    background: rgb(18,106,63);
+    border-top-right-radius:5px;
+    border-top-left-radius:5px;
+}
+
+#container .page-wrapper .page-left #inner input {
+    margin-right: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    float: right;
+}
+
+#container .page-wrapper .page-left #inner #small {
+    background: rgb(18,106,63);
+    height: 300px;
+}
+
+
+
+#container .page-wrapper .page-left #inner h2 {
+    text-align: center;
+    color: white;
+}
+
+#container .page-wrapper .area-tweet {
+    text-align: justify;
+}
+#container .page-left #inner img {
+    text-align: center;
+    width: 80px;
+    height: 80px;
+    margin-left: 72.5px;
+    margin-top: 10px;
+    border-radius: 5px;
+
+}
+#container .page-left #inner table {
+    height: 60px;
+    width: 100%;
+    background: white;
+    text-align: center;
+}
+#container .page-left #inner table th {
+    color: #8DA4AC;
+    font-size: 14px;
+}
+
+
+#container .page-left #inner .btn-tweet {
+    text-align: center;
+}
+#inner textarea {
+    margin-top: 15px;
+    text-align: center;
+    width: 180px;
+    margin-left: 20px;
+    height: 200px;
+}
+#inner button {
+    margin-left: 20px;
+}
+
+/* END PAGE LEFT */
+
+
+
+/* START PAGE-RIGHT */
+#container .page-wrapper .page-right {
+    padding: 15px 15px;
+    margin-top: 5px;
+    float: left;
+    width: 686px;
+    min-height: 800px;
+}
+
+#container .page-wrapper .page-right #inner {
+    padding-top: 10px;
+    padding-left: 15px;
+    background: white;
+    border-radius: 5px;
+}
+#container .page-wrapper .page-right h2 {
+    margin-top: 0px;
+    color: #8DA4AC;
+}
+
+/* START pagination */
+#container .page-wrapper .page-right .pagination {
+    width: 96%;
+    border-top: solid 1px #ccc;
+    margin-bottom: 0;
+
+}
+#container .page-wrapper .page-right .pagination span {
+    color: #ccc;
+}
+
+/* END pagination */
+.step-links {
+    text-align: center;
+}
+
+
+
+.cc {
+    width: 40px;
+    padding: 15px 0;
+}
+.cc-wrapper {
+    margin-left: 564px;
+}
+
+
+/* START INNER AREA */
+.inner-area {
+    margin-right: 25px;
+}
+.inner-area a{
+    margin-top: 5px;
+    padding: 0 5px;
+
+}
+
+
+
+/* START tweet */
+.tweet {
+    border-top: 1px solid #ccc;
+    padding-top: 15px;
+    width: 641px;
+}
+
+/* thumbnail img */
+.tweet img {
+    float: left;
+    width: 50px;
+    height: 50px;
+    display: block;
+    border-radius: 5px;
+    margin-right: 9px;
+
+}
+.tweet .username  {
+}
+
+.tweet .text {
+    margin-top: 10px;
+    width: 580px;
+    display: block;
+    margin-left: 59px;
+    line-height: 1.4em;
+}
+.tweet .date {
+    font-size: 12px;
+    font-weight: italic;
+    color: #777;
+}
+.tweet:last-child {
+    padding-bottom: 10px;
+}
+/* END tweet */
+
+/* START single-container */
+#single-container {
+    padding: 15px;
+}
+
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+.clear {
+    float: both;
+}
+
+.selected {
+    text-decoration: underline;
+}
+
+
+
