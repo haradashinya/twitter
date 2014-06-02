@@ -13,6 +13,7 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
+print("PROJECT PATH IS")
 print(PROJECT_PATH)
 
 
@@ -40,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'twitter',
+    'gunicorn',
 )
 SOUTH_AUTO_FREEZE_APP = True
 
