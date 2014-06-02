@@ -13,6 +13,7 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
+print("PROJECT PATH IS")
 print(PROJECT_PATH)
 
 
@@ -40,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'twitter',
+    'gunicorn',
 )
 SOUTH_AUTO_FREEZE_APP = True
 
@@ -106,6 +108,8 @@ USE_TZ = True
 
 STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(PROJECT_PATH,'static')
+
 
 STATICFILES_DIRS = (
     STATIC_PATH,
