@@ -11,23 +11,24 @@ from django.template.defaultfilters import register
 from django.template.defaultfilters import stringfilter
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
 
 
 PER_TWEET = 20
 
 
 def index(request):
+    print(settings.STATIC_ROOT)
     _tweets = Tweet.objects.order_by("-created_date").all()
     # show 2 tweets per page
     paginator = Paginator(_tweets,PER_TWEET)
     page = request.GET.get('page') or 1
+    user = None
     try:
         tweets = paginator.page(page)
     except EmptyPage:
         tweets = paginator.page(paginator.num_pages)
-
-    user = None
-    user_tweets = None
+        user_tweets = None
     if request.session.get("username"):
         user =  User.objects.get(username = request.session.get("username"))
     if user is None:

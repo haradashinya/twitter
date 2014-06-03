@@ -13,7 +13,6 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
-print("PROJECT PATH IS")
 print(PROJECT_PATH)
 
 
@@ -58,7 +57,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    # 'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -74,6 +72,8 @@ TEMPLATE_DIRS = (
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.static',
+
 )
 
 AUTH_PROFILE_MODULE = 'twitter.userprofile'
@@ -103,17 +103,16 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/dev/howto/static-files/
-
-STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
+# STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(PROJECT_PATH,'static')
-
-
+# STATIC_ROOT = os.path.join(PROJECT_PATH,'static')
+# print(STATIC_PATH)
 STATICFILES_DIRS = (
-    STATIC_PATH,
+        os.path.join(PROJECT_PATH, 'static'),
 )
+
+
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_PATH,'media')
