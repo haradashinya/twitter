@@ -141,10 +141,12 @@ def user_register(request):
         if profile_form.is_valid():
             profile = profile_form.save(commit=False)
             profile.user = user
-            registered = True
             if 'picture' in request.FILES:
                 profile.picture = request.FILES['picture']
             profile.save()
+        else:
+            print("Error")
+            print(profile_form.errors)
 
         return HttpResponseRedirect("/")
 
@@ -248,7 +250,7 @@ def user_timeline(request,user_name):
 
     try:
         user= User.objects.get(username = user_name)
-        title = "{} - Dwitter".format(user.name)
+        title = "{} - Dwitter".format(user.username)
     except ObjectDoesNotExist:
         title = None
         raise Http404

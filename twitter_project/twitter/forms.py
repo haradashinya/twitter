@@ -18,11 +18,9 @@ class TweetForm(forms.ModelForm):
         fields = ('text',)
 
 class UserProfileForm(forms.ModelForm):
-    picture = forms.FileField()
 
     class Meta:
         model = UserProfile
-        # fields = ('desc','picture',)
         fields = ('picture',)
 
 
