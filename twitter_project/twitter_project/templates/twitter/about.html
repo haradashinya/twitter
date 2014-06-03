@@ -31,20 +31,56 @@
     To Try it out,You need to <a href="/login">Login</a> or <a href="/register">Register</a>
     </p>
 
-    <h3>How to deploy yourself?</h3>
-    <h4>Environment</h4>
+    <h3>Setup</h3>
+    <pre>
+    cd pyvenv-3.4 venv
+    source venv/bin/activate
+    cd django-trunk; python setup.py install
+    pip install -r requirements.txt
+    python twitter_project/manage.py runserver
+    </pre>
+
+
+
+    <h3>Deploy it (Gunicorn + Nginx)</h3>
     <ul>
         <li>Python3.4</li>
         <li>Django1.7</li>
         <li>Gunicorn</li>
         <li>Nginx</li>
     </ul>
-    <h4>Deploy it</h4>
+
+
+ Setting of nginx file is like this.
+ <pre>
+
+ server {
+     listen 80;
+     server_name  your_server_name;
+
+     location /static {
+     root /path/to/twitter/twitter_project/twitter_project;
+     }
+
+     location / {
+     proxy_pass http://127.0.0.1:8001;
+     }
+
+ }
+</pre>
+
+ And type it to run server.
+
+ <pre>
+ gunicorn twitter_project.wsgi:application -c gunicorn.conf.py
+</pre>
+
 
 
     <h3>Question?</h3>
     <p>
-    If you have any questions? Please contact me my twitter account(@furodrive)
+    If you have any questions? Please contact  <a
+        href="https://twitter.com/furodrive">@furodrive</a>.
     </p>
 
 
