@@ -12,28 +12,33 @@ from django.template.defaultfilters import stringfilter
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
+from django.http import Http404
+from django.core.exceptions import  ObjectDoesNotExist
+
 
 
 PER_TWEET = 20
 
 
 def index(request):
-    print(settings.STATIC_ROOT)
     _tweets = Tweet.objects.order_by("-created_date").all()
     # show 2 tweets per page
     paginator = Paginator(_tweets,PER_TWEET)
     page = request.GET.get('page') or 1
-    user = None
+
     try:
+
+        #show public timeline
         tweets = paginator.page(page)
     except EmptyPage:
         tweets = paginator.page(paginator.num_pages)
-        user_tweets = None
-    if request.session.get("username"):
-        user =  User.objects.get(username = request.session.get("username"))
-    if user is None:
+
+
+
+    if request.session.get("username") is None:
         return render(request,"twitter/about.html")
     else:
+        user =  User.objects.get(username = request.session.get("username"))
         return render(request, "twitter/index.html",
             {
                 "login_user": user,
@@ -52,8 +57,6 @@ def user_edit(request,user_name):
     if request.method == "GET":
         user_form = UserForm(instance=user)
         profile_form = UserProfileForm(instance=user.profile)
-
-
         return render(request, "twitter/edit.html",
                       {
                           "user": user,
@@ -65,23 +68,12 @@ def user_edit(request,user_name):
         user_form = UserForm(data=request.POST,instance=user)
         profile_form = UserProfileForm(data=request.POST,instance=user.profile)
         if user_form.is_valid():
-            print("VALID")
             user_form.save()
+            request.session["username"] = request.POST["username"]
+            request.session["password"] = request.POST["password"]
         else:
             print(user_form.errors)
             print("INVALID")
-
-
-
-
-
-        if user_form.is_valid():
-            user_form.save()
-
-        user.save()
-        request.session["username"] = request.POST["username"]
-        request.session["password"] = request.POST["password"]
-
 
         if profile_form.is_valid():
             profile_form.save()
@@ -107,6 +99,7 @@ def followings_timeline(request,user_name):
         tweets = paginator.page(page)
     except EmptyPage:
         tweets =   paginator.page(paginator.num_pages)
+
     if user_name == request.session.get("username"):
         user = login_user
     else:
@@ -196,15 +189,13 @@ def new_tweet(request,user_name):
             "tweet_form": tweet_form
         })
     else:
-        # postの時
         user = User.objects.get_by_natural_key(user_name)
         tweet_form = TweetForm(data = request.POST)
         tweet = tweet_form.save(commit=False)
         tweet.user = user
         tweet.save()
-        return HttpResponse("Hello world")
+        return HttpResponse("success")
 
-        # return HttpResponseRedirect("/")
 
 def user_login(request):
     if request.method == "POST":
@@ -234,7 +225,11 @@ def user_logout(request):
 
 def user_timeline(request,user_name):
     login_user = User.objects.get(username = request.session.get("username"))
-    user= User.objects.get(username = user_name)
+
+    try:
+        user= User.objects.get(username = user_name)
+    except ObjectDoesNotExist:
+        raise Http404
     _tweets = user.tweets.order_by("-created_date").all()
     paginator = Paginator(_tweets,PER_TWEET)
     page = request.GET.get('page') or 1
