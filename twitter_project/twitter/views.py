@@ -106,7 +106,7 @@ def followings_timeline(request,user_name):
 
     paginator = Paginator(_tweets,PER_TWEET)
     page = request.GET.get('page') or 1
-    titlte = "Timeline - Dwitter"
+    title = "Timeline - Dwitter"
     try:
         tweets = paginator.page(page)
     except EmptyPage:
