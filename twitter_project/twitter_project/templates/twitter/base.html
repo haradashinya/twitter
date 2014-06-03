@@ -22,13 +22,12 @@
 <header>
     <hgroup class="cf">
 
-
         <h1 class="left">
             <a href="/"><img src="{% static 'img/logo.svg' %}"/></a>
         </h1>
         {% if request.session.username %}
             <h1><a href="/logout"><i class="fa fa-sign-out"></i></a></h1>
-            <h1><a href="/{{request.session.username}}/edit"><i class="fa fa-bars"></i></a></h1>
+            <h1><a href="/{{request.session.username}}/edit"><i class="fa fa-edit"></i></a></h1>
         {% else %}
             <h1><a href="/login"><i class="fa fa-sign-in"></i></a></h1>
         {% endif %}

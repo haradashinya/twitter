@@ -103,10 +103,7 @@ USE_L10N = True
 USE_TZ = True
 
 
-# STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(PROJECT_PATH,'static')
-# print(STATIC_PATH)
 STATICFILES_DIRS = (
         os.path.join(PROJECT_PATH, 'static'),
 )

@@ -100,8 +100,7 @@ def followings_timeline(request,user_name):
     users = user.profile.followings()
     __tweets = Tweet.objects.order_by("-created_date").all()
     _tweets = [tweet for tweet in __tweets if tweet.user in users]
-    if len(_tweets) == 0:
-        return HttpResponse("There is no followers.\nBack to <a href='/'>HOME</a>")
+
     paginator = Paginator(_tweets,PER_TWEET)
     page = request.GET.get('page') or 1
     try:
