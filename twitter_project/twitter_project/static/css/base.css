@@ -5,10 +5,18 @@ body {
 a:hover {
     color: red;
 }
-.img-screen {
-    margin-left: -10px;
-    padding-bottom: -150px;
+
+.wrapper-img {
 }
+
+.img-screen {
+    width: 75%;
+    height: 75%;
+    margin-left: -10px;
+    padding-bottom: -250px;
+    margin-bottom: -60px;
+}
+
 
 a{
     text-decoration: none;
