@@ -1,10 +1,14 @@
 {% extends "twitter/base.html" %}
 {% block body_block %}
 <div id="single-container">
+    {% load staticfiles %}
     <h1>What is  Dwitter?</h1>
     <p>
-    Dwitter is web app clone of Twitter made by Django.
+    Dwitter ( Django + Twitter ) is demo app like Twitter.
     </p>
+
+    <h3>Image</h3>
+    <img src= "{% static 'img/screen.png' %}" class='img-screen' />
     <h3>Why I made Dwitter?</h3>
     <p>
     Well, I'm beginning to learn Django Web Framework.
@@ -18,15 +22,27 @@
     </ul>
     <h3>Code</h3>
     <p>
-    You can view this code at <a href="">Github</a>.
+    You can view this code at <a target="_blank" href="https://github.com/okamurayasuyuki/twitter">Github</a>.
     </p>
-    <h3>Dive in </h3>
+    <h3>Try Demo.</h3>
     <p>
-    <a href="/login">Login</a> or <a href="/register">Register</a>
+    To Try it out,You need to <a href="/login">Login</a> or <a href="/register">Register</a>
     </p>
+
+    <h3>How to deploy yourself?</h3>
+    <h4>Environment</h4>
+    <ul>
+        <li>Python3.4</li>
+        <li>Django1.7</li>
+        <li>Gunicorn</li>
+        <li>Nginx</li>
+    </ul>
+    <h4>Deploy it</h4>
+
+
     <h3>Question?</h3>
     <p>
-    If you have any questions? Please contact me my twitter account(@furodrive)>
+    If you have any questions? Please contact me my twitter account(@furodrive)
     </p>
 
 

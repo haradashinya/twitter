@@ -5,6 +5,10 @@ body {
 a:hover {
     color: red;
 }
+.img-screen {
+    margin-left: -10px;
+    padding-bottom: -150px;
+}
 
 a{
     text-decoration: none;
@@ -59,8 +63,6 @@ a {
     width: 960px;
 
 }
-#container {
-}
 
 /* START PAGE LEFT */
 
@@ -71,6 +73,7 @@ a {
     min-height: 800px;
     float: left;
 }
+
 
 
 #container .page-wrapper .page-left #inner.big {
@@ -171,6 +174,7 @@ a {
 }
 #container .page-wrapper .page-right .pagination span {
     color: #ccc;
+
 }
 
 /* END pagination */
@@ -241,6 +245,8 @@ a {
 /* START single-container */
 #single-container {
     padding: 15px;
+    position: relative;
+
 }
 
 .left {
@@ -256,6 +262,22 @@ a {
 .selected {
     text-decoration: underline;
 }
+
+
+.page-login {
+    height: 100%;
+}
+footer {
+    background: rgb(18,106,63);
+    margin-bottom: -10px;
+    height: 40px;
+    text-align: center;
+    color: white;
+    line-height: 40px;
+}
+
+
+
 
 
 
