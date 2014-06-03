@@ -36,23 +36,33 @@ def index(request):
 
 
     if request.session.get("username") is None:
-        return render(request,"twitter/about.html")
+        title = "Dwitter"
+        return render(request,"twitter/about.html",{
+            "title": title
+        })
     else:
+
+        title = "Timeline - Dwitter"
         user =  User.objects.get(username = request.session.get("username"))
         return render(request, "twitter/index.html",
             {
+                "title": title,
                 "login_user": user,
                 "tweets": tweets,
                 "user": user
             })
 
 def about(request):
+    title = "Public - Dwitter"
     return render(request, "twitter/about.html",
                   {
+                      "title":title
                   }
                   )
 
 def user_edit(request,user_name):
+
+    title = "Timeline - Dwitter"
     user = User.objects.get(username = user_name)
     if request.method == "GET":
         user_form = UserForm(instance=user)
@@ -60,6 +70,7 @@ def user_edit(request,user_name):
         return render(request, "twitter/edit.html",
                       {
                           "user": user,
+                          "title": title,
                           "user_form":user_form,
                           "profile_form":profile_form
                       }
@@ -95,6 +106,7 @@ def followings_timeline(request,user_name):
 
     paginator = Paginator(_tweets,PER_TWEET)
     page = request.GET.get('page') or 1
+    titlte = "Timeline - Dwitter"
     try:
         tweets = paginator.page(page)
     except EmptyPage:
@@ -108,7 +120,8 @@ def followings_timeline(request,user_name):
         {
             "tweets": tweets,
             "login_user": login_user,
-            "user": user
+            "user": user,
+            "title": title
         })
 
 
@@ -137,11 +150,13 @@ def user_register(request):
 
 
     else:
+        title = "Register - Dwitter"
         user_form = UserForm()
         profile_form = UserProfileForm()
         return render(request, "twitter/register.html", {
             "user_form": user_form,
             "profile_form": profile_form,
+            "title": title
         })
 
 def relationship(request,user_name):
@@ -212,7 +227,11 @@ def user_login(request):
         else:
             return HttpResponse("Invalid login")
     else:
-        return render(request, "twitter/login.html", {})
+
+        title = "Login - Dwitter"
+        return render(request, "twitter/login.html", {
+            "title": title
+        })
 
 
 def user_logout(request):
@@ -226,9 +245,12 @@ def user_logout(request):
 def user_timeline(request,user_name):
     login_user = User.objects.get(username = request.session.get("username"))
 
+
     try:
         user= User.objects.get(username = user_name)
+        title = "{} - Dwitter".format(user.name)
     except ObjectDoesNotExist:
+        title = None
         raise Http404
     _tweets = user.tweets.order_by("-created_date").all()
     paginator = Paginator(_tweets,PER_TWEET)
@@ -237,6 +259,7 @@ def user_timeline(request,user_name):
     return render(request,"twitter/user.html",{
         "tweets": tweets,
         "user_tweets": user.tweets,
+        "title": title,
         "user": user,
         "login_user": login_user
     })

@@ -12,12 +12,17 @@
         window.user = '{{request.session.username}}';
     </script>
     <script src="{% static 'js/post.js' %}"></script>
+    {% if title %}
+    <title>{{title}}</title>
+    {% else %}
     <title>Dwitter</title>
+    {% endif %}
     <meta name="description" content= "Dwitter ( Django + Twitter ) is demo app like Twitter."></meta>
 
 </head>
 
 <body>
+
 
     <div id="container">
 
