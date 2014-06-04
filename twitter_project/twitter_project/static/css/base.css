@@ -1,6 +1,7 @@
 body {
-    margin-top: -1px;
     font-family: "Helvetica Neue",serif;
+    margin: 0;
+    padding: 0;
 }
 a:hover {
     color: red;
@@ -65,10 +66,13 @@ a {
 }
 /* END hgroup */
 
+
+
 #container {
-    margin: 0 auto;
-    background: rgb(220,255,184) ;
+
     width: 960px;
+    background: rgb(220,255,184) ;
+    margin: 0 auto;
 
 }
 
@@ -138,6 +142,7 @@ a {
 #container .page-left #inner .btn-tweet {
     text-align: center;
 }
+
 #inner textarea {
     margin-top: 15px;
     text-align: center;
@@ -230,8 +235,6 @@ a {
     margin-right: 9px;
 
 }
-.tweet .username  {
-}
 
 .tweet .text {
     margin-top: 10px;
@@ -253,7 +256,6 @@ a {
 /* START single-container */
 #single-container {
     padding: 15px;
-    position: relative;
 
 }
 
