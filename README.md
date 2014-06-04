@@ -3,6 +3,7 @@
 
 Dwitter is sample app which use Django.
 
+Demo: http://dwitter.furodrive.com
 
 ## SETUP
     pyvenv-3.4 venv
