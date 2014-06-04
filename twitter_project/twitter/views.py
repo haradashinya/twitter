@@ -36,7 +36,7 @@ def index(request):
 
 
     if request.session.get("username") is None:
-        title = "Dwitter"
+        title = "Dwitter - About"
         return render(request,"twitter/about.html",{
             "title": title
         })
@@ -53,7 +53,7 @@ def index(request):
             })
 
 def about(request):
-    title = "Public - Dwitter"
+    title = "About - Dwitter"
     return render(request, "twitter/about.html",
                   {
                       "title":title
