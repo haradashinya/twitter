@@ -5,7 +5,7 @@ Dwitter is sample app which use Django.
 
 
 ## SETUP
-    cd pyvenv-3.4 venv
+    pyvenv-3.4 venv
     source venv/bin/activate
     cd django-trunk; python setup.py install
     pip install -r requirements.txt
