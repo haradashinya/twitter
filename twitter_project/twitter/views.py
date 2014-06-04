@@ -61,7 +61,6 @@ def about(request):
                   )
 
 def user_edit(request,user_name):
-
     title = "Timeline - Dwitter"
     user = User.objects.get(username = user_name)
     if request.method == "GET":
