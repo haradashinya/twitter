@@ -17,7 +17,7 @@ from django.core.exceptions import  ObjectDoesNotExist
 
 
 
-PER_TWEET = 20
+PER_TWEET = 10
 
 
 def index(request):
